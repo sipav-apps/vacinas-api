@@ -26,4 +26,33 @@ model User {
   responsible_id     Int?
   responsible        User?     @relation("ResponsibleToDependent", fields: [responsible_id], references: [id])
   dependents         User[]    @relation("ResponsibleToDependent")
+  vacinas Imunizacao[]
+}
+
+model Doenca {
+  nome           String
+  id_doenca      Int       @id @default(autoincrement())
+  informacao     String
+  vacinas        Vacina[]
+}
+
+model Vacina {
+  nome                  String
+  id_vacina             Int  @id @default(autoincrement())
+  qtd_reforco           Int
+  idade_primeira_dose   Int
+  periodicidade         Int
+  informacao            String
+  doencas               Doenca[]
+  users Imunizacao[]
+}
+
+model Imunizacao {
+  id_imunizacao Int  @id @default(autoincrement())
+  dt_imunizacao DateTime
+  observacao String
+  vacina Vacina @relation(fields: [id_vacina], references: [id_vacina])
+  id_vacina Int
+  user  User @relation(fields: [id_user], references: [id])
+  id_user   Int
 }
