@@ -1,5 +1,7 @@
+import doencaRoute from "./doencaRoute.js";
+
 const routes = app => {
-  null;
+  doencaRoute(app);
 };
 
 export default routes;

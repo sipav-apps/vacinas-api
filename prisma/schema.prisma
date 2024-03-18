@@ -41,7 +41,7 @@ model Vacina {
   id_vacina             Int  @id @default(autoincrement())
   qtd_reforco           Int
   idade_primeira_dose   Int
-  periodicidade         Int
+  periodicidade         Int?
   informacao            String
   doencas               Doenca[]
   users Imunizacao[]
